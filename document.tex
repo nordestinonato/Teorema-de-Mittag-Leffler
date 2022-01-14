@@ -1,0 +1,208 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This project aims to create the UFC template for presentation.                %%
+%% author: Maurício Moreira Neto - Doctoral student in Computer Science (MDCC)   %%
+%% contacts:                                                                     %%
+%%    e-mail: maumneto@ufc.br                                                    %%
+%%    linktree: https://linktr.ee/maumneto                                       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{libs/ufc_format}
+
+% Inserting the preamble file with the packages
+\input{libs/preamble.tex}
+% Inserting the references file
+\bibliography{references.bib}
+
+% Title
+\title[Teorema de Mittag-Leffler]{\huge\textbf{Teorema de Mittag-Leffler}}
+% Subtitle
+\subtitle{Disciplina:    Análise Complexa}
+% Author of the presentation
+\author{Carlos Henrique Lima de Moura}
+% Institute's Name
+\institute[UFC]{
+    % Department Name
+    \department{Mestrado em Matemática}
+    \newline
+    \ufc
+}
+% date of the presentation
+\date{9 de janeiro de 2022}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Start Document of the Presentation                                           %%               
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+% insert the code style
+\input{libs/code_style}
+\newtheorem{defi}{\uline{Definição}}
+\newtheorem{teo}{\uline{Teorema}}
+\newtheorem{prop}{\uline{Proposição}}
+\newtheorem{lem}{\uline{Lema}}
+\newtheorem{exemplo}{Exemplo}
+\newtheorem{prova}{\uline {Prova}:}
+%% ---------------------------------------------------------------------------
+% First frame (with tile, subtitle, ...)
+\begin{frame}{}
+    \maketitle
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+% Second frame
+\begin{frame}{Sumário}
+    \tableofcontents
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+% This presentation is separated by sections and subsections
+\section{Preliminares}
+\begin{frame}{Preliminares}
+Consideremos o seguinte problema: Seja $G\subset \mathbb\mathbb{C}$ aberto, \pause  $\{a_{k}\}$ sequência de pontos distintos em $G$, ou seja, $k\neq j \Longleftrightarrow a_{k}\neq a_{j}, \forall k,j \in \mathbb{N}$ e \pause tal que $\{a_{k}\}$ não tenha limite em $G$. \\
+\pause
+Para cada $k\in \mathbb{Z}, k\geq 1$ consideremos, \pause 
+$$S_{k}\left(z\right)= \displaystyle \sum_{j=1}^{m_{k}}\frac{A_{jk}}{\left(z-a_{k}\right)^{j}}, m_{k}\in \mathbb{Z}, m_{k}>0$$\\
+\pause e com $A_{1k}, A_{2k}, \cdots, A_{m_{k}k}$ coeficientes complexos arbitrários.\\
+\end{frame}
+
+%%----------------------------------------------------------------------------
+\begin{frame}{Preliminares}
+\textbf{PERGUNTA}: \textit{Existe alguma função meromorfa $f$ sobre $G$ cujos pólos são exatamente os pontos $\{a_{k}\}$ e tal que a parte singular de $f$ em $z=a_{k}$ é $S_{k}\left(z\right)$}? \\
+\textbf{RESPOSTA}: Segue do \textit{Teorema de Mittag-Leffler}.
+\end{frame}
+
+\section{Ferramentas}
+\subsection{Teorema de Runge}
+\begin{frame}{Teorema de Runge}
+    % itemize
+   Enunciaremos o teorema central do capítulo:
+    \begin{teo}[Runge]
+    Seja $K\subset \mathbb{C}$ compacto e $E\subset \mathbb{C}_{\infty}\backslash K$ que encontra cada componente de $\mathbb{C}_{\infty}\backslash K$. Se $f$ é holomorfa em um aberto contendo $K$ e $\varepsilon>0$, então existe uma função racional $R(z)$ com pólos apenas em $E$ e tais que, 
+    $$|f(z)-R(z)|<\varepsilon,$$
+   para todo $z\in K$.
+         \end{teo}
+\pause 
+
+\begin{prova}
+Conway págs 198, 199 e 200.
+\end{prova}
+    \vspace{0.4cm} % vertical space
+    
+  \end{frame}
+
+
+
+%% ---------------------------------------------------------------------------
+\subsection{Proposição VII.1.2}
+\begin{frame}{Proposição VII.1.2}
+   \begin{prop}[VII.1.2]
+   Seja $G\subset \mathbb{C}$ aberto. Então existe uma sequência de compactos de $G, \left \lbrace K_{n} \right \rbrace $ tais que $G=\displaystyle \bigcup_{n=1}^{\infty}K_{n}$. Além disso, os conjuntos $K_{n}$ podem ser escolhidos satisfazendo as seguintes condições:\\
+   \pause
+   (a) $K_{n}\subset int\left( K_{n+1} \right)$;\\
+   \pause
+   (b) $K\subset G$ com $K$ compacto, implica que $K\subset K_{n}$, para algum $n$;\\
+   \pause
+   (c) Toda componente de $\mathbb{C}_{\infty}\backslash K_{n}$ contém uma componente de $\mathbb{C}_{\infty}\backslash G$.
+   \end{prop}
+   
+   \pause
+   
+   \begin{prova}
+   Conway, pág. 143. 
+   \end{prova}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+\subsection{M-teste de Weierstrass}
+\begin{frame}
+   \begin{teo}[M-teste de Weierstrass]
+       Seja $u_{n}:X\rightarrow \mathbb{C}$ uma função tal que $\left|u_{n}\right|\leq M_{n}$ para todo $x\in X$ \pause e suponhamos que as constantes satisfaçam $\displaystyle \sum_{n=1}^{\infty}M_{n}< \infty$. \pause Então $\displaystyle \sum_{n=1}^{\infty}u_{n}$ é uniformemente convergente. 
+\end{teo}
+\begin{prova}
+ Conway pág 29.
+\end{prova} 
+\end{frame}
+
+%%----------------------------------------------------------------------------
+\section{O TEOREMA}
+\begin{frame}{Teorema de \textit{Mittag-Leffler} - Enunciado}
+   \begin{teo}[Mittag-Leffler]
+Seja $G\subset \mathbb\mathbb{C}$ aberto e $\{a_{k}\}$ sequência de pontos distintos em $G$, tal que $\{a_{k}\}$ não tenha limite em $G$. \pause Seja $\{S_{k}\left(z\right)\}$ uma sequência de funções racionais definidas por, \pause
+$$S_{k}\left(z\right)= \displaystyle \sum_{j=1}^{m_{k}}\frac{A_{jk}}{\left(z-a_{k}\right)^{j}}, m_{k}\in \mathbb{Z}, m_{k}>0 \text{ e } A_{jk}\in \mathbb{C}$$.\\
+ \pause Então, existe existe uma função meromorfa $f:G\rightarrow \mathbb{C}$ cujos pólos são exatamente os pontos $\{a_{k}\}$ e tais que a parte singular de $f$ em $z=a_{k}$ é $S_{k}\left(z\right)$.
+\end{teo} 
+\end{frame}
+
+%% -----------------------------------------------------------
+\section{Prova do teorema}
+\begin{frame}{Prova}
+\begin{prova}
+Como $G$ é aberto, pela Proposição VII.1.2 podemos escrevê-lo na forma, \pause
+$$G=\bigcup_{n=1}^{\infty}K_{n}$$
+onde cada $K_{n}\subset \mathbb{C}$ é compacto e $K_{n}\subset int\left(K_{n+1}\right)$. Ademais, cada componente de $\mathbb{C}_{\infty}\backslash K_{n}$ contém uma componente de  $\mathbb{C}_{\infty}\backslash G$.\\ \pause
+Como $K_{n}$ é compacto para todo $n \in \mathbb{N}$ e $\{a_{k}\}$ não converge em $G$, então existe apenas uma quantidade finita de $a_{k}$'s em cada $K_{n}$, pois do contrário $a_{k}$ vai convergir em $K_{n}$ para algum $n\in \mathbb{N}$.
+\end{prova}
+\end{frame}
+%%__________Continuação da Prova___________________________
+
+\begin{frame}{Prova}
+\begin{prova}
+Definamos os seguintes conjuntos, 
+$$I_{1}=\left \lbrace k:a_{k}\in K_{1}\right \rbrace \text{ e } I_{n}=\left \lbrace k: a_{k}\in K_{n}\backslash K_{n-1}\right \rbrace.$$ \pause
+Dessa forma, observe que, \\
+$$I_{2}=\left \lbrace k: a_{k}\in K_{2}\backslash K_{1}\right \rbrace , \pause
+I_{3}=\left \lbrace k: a_{k}\in K_{3}\backslash K_{2}\right \rbrace ,\pause
+\cdots ,
+I_{n}=\left \lbrace k: a_{k}\in K_{n}\backslash K_{n-1}\right \rbrace$$
+
+\end{prova}
+\end{frame}
+\begin{frame}{Prova}
+\begin{prova}
+Agora, para $n\geq 2$ definamos a seguinte sequência de funções, \pause
+$$f_{n}\left(z\right)= \sum_{k\in I_{n}}S_{k}\left(z\right).$$
+Ou seja, \pause
+$$f_{n}\left(z\right)= \sum_{k\in I_{n}}\sum_{j=1}^{m_{k}}\frac{A_{jk}}{\left(z-a_{k}\right)^{j}}, m_{k}\in \mathbb{Z}_{+} \backslash \{0\}, A_{jk}\in \mathbb{C}.$$
+\pause
+Observe que $f_{n}$ é racional e seus pólos são exatamente $\{a_{k}: k\in I_{n}\}\subset K_{n}\backslash K_{n-1}$. \\
+\pause
+Além disso, se $I_{n}=\emptyset \Rightarrow f_{n}\equiv 0$.
+\end{prova}
+\end{frame}
+
+\begin{frame}{Prova}
+\begin{prova}
+Agora, como $f_{n}$ não tem pólos em $K_{n-1}$ (Se $a_{k}$ fosse pólo de $f_{n}$ então $k\notin I_{n}$), temos que $f_{n}$ é holomorfa em uma vizinhança de $K_{n-1}$.\pause  Logo, pelo teorema de Runge, existe uma função racional $R_{n}\left(z\right)$ com pólos em $\mathbb{C}_{\infty}\backslash G$ e satisfazendo, \pause
+$$|f_{n}\left(z\right)-R_{n}\left(z\right)|<\left(\frac{1}{2}\right)^{n}, \forall z \in K_{n-1}.$$
+
+\end{prova}
+\end{frame}
+
+\begin{frame}{Prova}
+\begin{prova}
+\begin{itemize}
+ \item \textbf{\uline{Afirmação}}: A função $f:G\longrightarrow \mathbb{C}$, dada por,\\
+ $$f\left(z\right) = f_{1}\left(z\right) + \sum_{n=2}^{\infty}\left[f_n\left(z\right) - R_n\left(z\right)\right]$$
+ é a função meromorfa desejada. \\
+  \end{itemize}
+\end{prova}
+\end{frame}
+
+\begin{frame}{Prova}
+\begin{prova}
+Mostraremos pelo M-teste de Weierstrass $\displaystyle \sum_{n=2}^{\infty}\left[f_n\left(z\right) - R_n\left(z\right)\right]$ converge uniformemente sobre todo compacto de $G\backslash \{a_{k}; k\geq 1\}$.\\
+\pause
+Então, dado $K$ um compacto de $G\backslash \{a_{k}; k\geq 1\}$ \pause temos que $K$ também é compacto em $G$  existe $N$ inteiro com $K\subset K_{N}$. Então, para $n\geq N \Rightarrow |f_n\left(z\right) - R_n\left(z\right)|< \left(\frac{1}{2}\right)^{n}$. \pause Também pelo M teste de Weierstrass $\sum_{n=2}^{\infty}\left[f_n\left(z\right) - R_n\left(z\right)\right]$ converge uniformemente sobre $K$. \\
+
+\end{prova}
+\end{frame}
+
+\begin{frame}{Prova}
+\begin{prova}
+Falta garantir apenas mostrar que os pólos de $f$ são $\{a_{k}; k\geq 1\}$ e que a parte singular de $f$ em $a_{k}$ é $S_{k}(z)$. \pause Para isso, dado $k\geq 1$, existe $R>0$ tal que, $|a_{j}-a_{k}|>R$ para $j\neq k$. \pause Assim, $f(z) = S_{k}(z)+g(z)$ para $0<|z-a_{k}|<R$, para $g$ holomorfa em $B\left(a_{k}, R\right)$. \pause Então, $z=a_{k}$ é um pólo de $f$ e $S_{k}(z)$ é sua parte singular. Fato que conclui a demonstração. $\blacksquare$
+\end{prova}
+\end{frame}
+
+
+
+
+\end{document}
